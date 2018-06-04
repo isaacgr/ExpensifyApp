@@ -1,6 +1,15 @@
 // entry -> output
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+
+process.env.NODE_ENV=process.env.NODE_ENV || 'development';
+
+if (process.env.NODE_ENV === 'test'){
+  require('dotenv').config({ path: '.env.test' });
+} else if (process.env.NIDE_ENV === 'development') {
+  require('dotenv').config({ path: '.env.development' });
+}
 
 module.exports = (env) => {
   const isProduction = env === 'production'
@@ -30,7 +39,7 @@ module.exports = (env) => {
             },
             {
               loader: 'sass-loader',
-              options: {
+              options: {test
                 sourceMap: true
               }
             }
@@ -39,7 +48,16 @@ module.exports = (env) => {
       }]
     },
     plugins: [
-      CSSExtract
+      CSSExtract,
+      new webpack.DefinePlugin({
+        'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
+        'process.env.FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
+        'process.env.FIREBASE_DATABASE': JSON.stringify(process.env.FIREBASE_DATABASE),
+        'process.env.FIREBASE_PROJECT': JSON.stringify(process.env.FIREBASE_PROJECT),
+        'process.env.FIREBASE_STORAGE_BUCKET': JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
+        'process.env.FIREBASE_MESSAGING_SENDER': JSON.stringify(process.env.FIREBASE_MESSAGING_SENDER)
+
+      })
     ],
     devtool: isProduction ? 'source-map' : 'inline-source-map',
     devServer: {
