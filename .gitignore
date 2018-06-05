@@ -3,3 +3,4 @@ public/scripts/app.js
 public/dist/
 package-lock.json
 yarn-error.log
+.env*
