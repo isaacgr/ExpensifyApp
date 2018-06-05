@@ -18,11 +18,11 @@ exports[`should render expense list with expenses 1`] = `
   </h1>
   <ExpenseListItem
     amount={100}
-    createdAt={"1970-01-01T00:00:00.000Z"}
+    createdAt={0}
     description="Car"
     id="1"
     key="1"
-    note=""
+    note="Its a car"
   />
   <ExpenseListItem
     amount={10000}
@@ -30,7 +30,7 @@ exports[`should render expense list with expenses 1`] = `
     description="Rent"
     id="2"
     key="2"
-    note=""
+    note="Its rent"
   />
   <ExpenseListItem
     amount={1000}
@@ -38,7 +38,7 @@ exports[`should render expense list with expenses 1`] = `
     description="Credit Card"
     id="3"
     key="3"
-    note=""
+    note="Its a debt"
   />
 </div>
 `;
