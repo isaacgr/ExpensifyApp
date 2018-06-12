@@ -6,16 +6,19 @@ import EditExpensePage from '../components/EditExpensePage';
 import NotFoundPage from '../components/NotFoundPage';
 import HelpPage from '../components/HelpPage';
 import LoginPage from '../components/LoginPage';
+import createHistory from 'history/createBrowserHistory'
 import {
-  BrowserRouter,
+  Router,
   Route,
   Switch,
   Link,
   NavLink
 } from 'react-router-dom';
 
+export const history = createHistory();
+
 const AppRouter = () => (
-  <BrowserRouter>
+  <Router history={history}>
     <div>
       <Header/>
       <Switch>
@@ -45,7 +48,7 @@ const AppRouter = () => (
         />
       </Switch>
     </div>
-  </BrowserRouter>
+  </Router>
 );
 
 export default AppRouter;
