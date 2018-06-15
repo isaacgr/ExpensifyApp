@@ -14,16 +14,15 @@ import {
   NavLink
 } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
-import Header from '../components/Header';
+import PublicRoute from './PublicRoute';
 
 export const history = createHistory();
 
 const AppRouter = () => (
   <Router history={history}>
     <div>
-      <Header />
       <Switch>
-        <Route
+        <PublicRoute
           path='/'
           component={LoginPage}
           exact={true}
@@ -39,10 +38,6 @@ const AppRouter = () => (
         <PrivateRoute
           path='/edit/:id'
           component={EditExpensePage}
-        />
-        <Route
-          path='/help'
-          component={HelpPage}
         />
         <Route
           component={NotFoundPage}
