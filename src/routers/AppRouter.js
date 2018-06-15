@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../components/Header';
 import ExpenseDashboardPage from '../components/ExpenseDashboardPage';
 import AddExpensePage from '../components/AddExpensePage';
 import EditExpensePage from '../components/EditExpensePage';
@@ -14,28 +13,30 @@ import {
   Link,
   NavLink
 } from 'react-router-dom';
+import PrivateRoute from './PrivateRoute';
+import Header from '../components/Header';
 
 export const history = createHistory();
 
 const AppRouter = () => (
   <Router history={history}>
     <div>
-      <Header/>
+      <Header />
       <Switch>
         <Route
           path='/'
           component={LoginPage}
           exact={true}
         />
-        <Route
+        <PrivateRoute
           path='/dashboard'
           component={ExpenseDashboardPage}
         />
-        <Route
+        <PrivateRoute
           path='/create'
           component={AddExpensePage}
         />
-        <Route
+        <PrivateRoute
           path='/edit/:id'
           component={EditExpensePage}
         />
